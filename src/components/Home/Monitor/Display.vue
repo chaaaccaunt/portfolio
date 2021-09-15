@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { renderSolarSystem } from "@/libs/renderSolarSystem";
+import { renderSolarSystem } from "@/components/Home/Monitor/renderSolarSystem";
 
 export default defineComponent({
   name: "Display",

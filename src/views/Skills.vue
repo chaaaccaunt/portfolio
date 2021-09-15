@@ -1,8 +1,8 @@
-<template> </template>
+<template></template>
 
 <script lang="ts">
-import vue from "vue";
-export default vue.defineComponent({
+import { defineComponent } from "vue";
+export default defineComponent({
   name: "Skills",
 });
 </script>
