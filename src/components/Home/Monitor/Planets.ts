@@ -170,7 +170,7 @@ export class solarSystem {
     Object.entries(this.solarSystem).forEach((pl, index) => {
       if (pl[1].dist > 0) {
         pl[1].x = this.cw;
-        pl[1].y = this.ch - this.ch * 0.15 * index;
+        pl[1].y = this.ch - this.ch * index * 0.12;
       } else {
         pl[1].x = this.cw;
         pl[1].y = this.ch;

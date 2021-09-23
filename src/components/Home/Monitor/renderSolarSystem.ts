@@ -5,7 +5,7 @@ export function renderSolarSystem(canvas: HTMLCanvasElement) {
   const ctx = canvas.getContext("2d")!;
   function resize() {
     canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight - 20;
+    canvas.height = canvas.offsetHeight;
   }
   resize();
 
@@ -17,19 +17,22 @@ export function renderSolarSystem(canvas: HTMLCanvasElement) {
     });
   }
 
-  const system = new solarSystem(ctx, canvas.offsetWidth / 2, (canvas.offsetHeight - 20) / 2, dirs);
+  const system = new solarSystem(ctx, canvas.offsetWidth / 2, canvas.offsetHeight / 2, dirs);
   system.init();
 
-  const stars = new StarsAsteroids(canvas.offsetWidth, canvas.offsetHeight - 20, dirs, system.solarSystem.neptune.y);
-  stars.makeSystem();
+  const stars = new StarsAsteroids(canvas.offsetWidth, canvas.offsetHeight - 20, dirs, system.solarSystem.neptune.y, system.solarSystem.mars.y);
+  stars.init();
 
   function looper() {
     stars.rotateAsteroids();
     ctx.fillStyle = "hsl(229, 100%, 4%)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < stars.stars.length; ++i) {
+      const rand = (Math.random() * 100) | 0;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = `hsl(229, 62%, ${rand}%)`;
       ctx.fillStyle = stars.stars[i].color;
-      ctx.fillRect(stars.stars[i].x, stars.stars[i].y, 2, 2);
+      ctx.fillRect(stars.stars[i].x, stars.stars[i].y, 1, 1);
     }
     for (let i = 0; i < stars.asteroids.length; ++i) {
       ctx.shadowBlur = 0;

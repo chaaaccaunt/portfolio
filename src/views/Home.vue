@@ -24,11 +24,9 @@ export default defineComponent({
 
 <style lang="scss">
 .home {
+  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-grow: 1;
   background-color: rgb(131, 163, 163);
 }
 </style>

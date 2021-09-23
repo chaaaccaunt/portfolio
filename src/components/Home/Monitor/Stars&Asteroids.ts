@@ -4,8 +4,8 @@ export class StarsAsteroids {
   public kuiper: { x: number; y: number; color: string; dir: number }[] = [];
   private ast = {
     asteroids: {
-      x: 0, //canvas.offsetWidth / 2,
-      y: 0, //canvas.offsetHeight * 0.15 + 5,
+      x: 0,
+      y: 0,
     },
     degree: 0,
     dir: 0,
@@ -15,8 +15,8 @@ export class StarsAsteroids {
   };
   private kup = {
     asteroids: {
-      x: 0, //canvas.offsetWidth / 2,
-      y: 0, //system.solarSystem.neptune.y - 27,
+      x: 0,
+      y: 0,
     },
     degree: 0,
     dir: 0,
@@ -24,21 +24,21 @@ export class StarsAsteroids {
     speed: 0,
     count: 0,
   };
-  constructor(private width: number, private height: number, private dirs: { x: number; y: number }[] = [], private nPosition: number) {
+  constructor(private width: number, private height: number, private dirs: { x: number; y: number }[] = [], private nPosition: number, private mPosition: number) {
     this.width = width;
     this.height = height;
     this.dirs = dirs;
     this.ast.asteroids.x = width / 2;
-    this.ast.asteroids.y = height * 0.15 + 5;
+    this.ast.asteroids.y = mPosition - 27;
     this.kup.asteroids.x = width / 2;
     this.kup.asteroids.y = nPosition - 27;
   }
   randomNum() {
     return Math.random() > 0.5 ? ~((Math.random() * 8) | 0) : (Math.random() * 8) | 0;
   }
-  makeSystem() {
-    for (let i = 0; i < 1000; i++) {
-      this.stars.push({ x: (Math.random() * this.width) | 0, y: (Math.random() * this.height) | 0, color: `hsl(${(Math.random() * 255) | 0}, 61%, 93%)` });
+  init() {
+    for (let i = 0; i < 400; i++) {
+      this.stars.push({ x: (Math.random() * this.width) | 0, y: (Math.random() * this.height) | 0, color: `hsl(${(Math.random() * 255) | 0}, 62%, 93%)` });
     }
     for (let i = 0; i < 1620; i++) {
       this.ast.count = (this.ast.count + 0.5) % 1620;
@@ -61,7 +61,7 @@ export class StarsAsteroids {
   }
   rotateAsteroids() {
     this.ast.speed = (this.ast.speed + 1) % 10;
-    if (this.ast.speed % 3 === 0) {
+    if (this.ast.speed % 2 === 0) {
       this.ast.raduis = (this.ast.raduis + 0.5) % 810;
       for (let i = 0; i < this.asteroids.length; ++i) {
         if (~~(this.ast.raduis % 4.5) === 0) this.asteroids[i].dir = (this.asteroids[i].dir + 1) % 360;
@@ -70,7 +70,7 @@ export class StarsAsteroids {
       }
     }
     this.kup.speed = (this.kup.speed + 1) % 10;
-    if (this.kup.speed % 5 === 0) {
+    if (this.kup.speed % 2 === 0) {
       this.kup.raduis = (this.kup.raduis + 0.5) % 3240;
       for (let i = 0; i < this.kuiper.length; ++i) {
         if (~~(this.kup.raduis % 8.5) === 0) this.kuiper[i].dir = (this.kuiper[i].dir + 1) % 360;

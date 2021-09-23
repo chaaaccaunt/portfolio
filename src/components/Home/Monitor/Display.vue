@@ -27,11 +27,7 @@ export default defineComponent({
 
 <style lang="scss">
 .monitor-display {
-  border-top: 5px solid rgb(39, 42, 44);
-  border-right: 5px solid rgb(39, 42, 44);
-  border-left: 5px solid rgb(39, 42, 44);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  width: 100%;
   height: 100%;
   &-canvas {
     width: 100%;
