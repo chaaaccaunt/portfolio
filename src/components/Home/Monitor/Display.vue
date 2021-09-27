@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { renderSolarSystem } from "@/components/Home/Monitor/renderSolarSystem";
+import { renderSolarSystem } from "@/components/Home/Monitor/Display/SolarSystem";
 
 export default defineComponent({
   name: "Display",
@@ -15,12 +15,12 @@ export default defineComponent({
   },
   methods: {
     renderSolar() {
-      const canvas = this.$refs.mainCanvas as HTMLCanvasElement;
-      renderSolarSystem(canvas);
+      renderSolarSystem(this.$refs.mainCanvas as HTMLCanvasElement);
     },
   },
   mounted() {
     this.renderSolar();
+    window.addEventListener("resize", this.renderSolar);
   },
 });
 </script>
@@ -31,7 +31,6 @@ export default defineComponent({
   height: 100%;
   &-canvas {
     width: 100%;
-    height: 100%;
   }
 }
 </style>

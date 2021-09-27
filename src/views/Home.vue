@@ -26,6 +26,7 @@ export default defineComponent({
 .home {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   flex-grow: 1;
   background-color: rgb(131, 163, 163);
 }
