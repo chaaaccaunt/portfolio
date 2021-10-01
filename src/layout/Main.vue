@@ -21,7 +21,16 @@ export default defineComponent({
 
 <style lang="scss">
 .container {
-  width: 1440px;
-  margin: 0 auto;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 80px 90% 1fr;
+  grid-template-columns: 1fr 80% 1fr;
+  grid-template-areas: "header header header" ". main ." ". footer .";
+}
+.navbar {
+  grid-area: header;
+}
+main {
+  grid-area: main;
 }
 </style>

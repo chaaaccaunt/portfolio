@@ -269,7 +269,7 @@ export default defineComponent({
     top: -40px;
     right: -40px;
     background-color: transparent;
-    background-image: url("../../../assets/icons/x.png");
+    background-image: url("~@/assets/icons/x.png");
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -288,10 +288,12 @@ export default defineComponent({
     transform: translate(70%, -15%) rotate(280deg) scale(0.2);
   }
   65% {
-    transform: translate(70%, -10%) rotate(280deg) scale(0.2);
+    transform: translate(70%, -10%) rotate(320deg) scale(0.2);
   }
   100% {
-    transform: translate(40%, 15%) rotate(360deg) scale(0.5);
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%) rotate(360deg) scale(0.5);
     opacity: 1;
   }
 }

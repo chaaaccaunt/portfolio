@@ -3,8 +3,8 @@ import { Members } from "./Members";
 export function renderSolarSystem(canvas: HTMLCanvasElement) {
   const ctx = canvas.getContext("2d")!;
   let w: number, h: number, cw: number, ch: number;
-  w = canvas.width = 1920;
-  h = canvas.height = 1080;
+  w = canvas.width = canvas.offsetWidth;
+  h = canvas.height = canvas.offsetHeight;
   cw = w / 2;
   ch = h / 2;
   const dirs: { x: number; y: number }[] = [];

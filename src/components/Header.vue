@@ -40,21 +40,33 @@ export default defineComponent({
 <style lang="scss">
 .navbar {
   width: 100%;
-  padding: 20px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 80px;
+  & nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    margin-top: 10px;
+  }
   & a {
-    margin: 0 15px;
+    display: block;
+    margin: 0 10px;
     padding: 5px 10px;
     text-decoration: none;
-    border: 1px solid rgb(47, 110, 194);
+    border: 1px solid #34373b;
     border-radius: 4px;
-    color: #000;
+    color: #34373b;
   }
   & &__exact-active {
-    background-color: rgb(47, 110, 194);
+    background-color: rgb(125, 162, 209);
+    border-color: rgb(125, 162, 209);
     color: #fff;
+  }
+}
+
+@media (max-aspect-ratio: 3/5) {
+  .navbar {
+    font-size: 0.6em;
   }
 }
 </style>

@@ -71,7 +71,7 @@ export class Members {
       satellite: null,
       array: [] as { x: number; y: number; color: string; dir: number }[],
     },
-    asteroids: {
+    beltOfAsteroids: {
       type: "asteroids",
       position: { x: 0, y: 0 },
       direction: { x: 0, y: 0 },
@@ -131,7 +131,7 @@ export class Members {
       satellite: null,
       array: [] as { x: number; y: number; color: string; dir: number }[],
     },
-    kuiper: {
+    beltOfKuiper: {
       type: "asteroids",
       position: { x: 0, y: 0 },
       direction: { x: 0, y: 0 },
@@ -143,7 +143,7 @@ export class Members {
       satellite: null,
       array: [] as { x: number; y: number; color: string; dir: number }[],
     },
-    pluton: {
+    pluto: {
       type: "orbital",
       position: { x: 0, y: 0 },
       direction: { x: 0, y: 0 },
@@ -163,7 +163,7 @@ export class Members {
   constructor(private width: number, private height: number, private directions: { x: number; y: number }[], private ctx: CanvasRenderingContext2D) {
     this.cw = Math.round(this.width / 2);
     this.ch = Math.round(this.height / 2);
-    this.distance = Math.ceil(this.height * 0.053);
+    this.distance = Math.ceil((this.height / (this.height / 9)) * 6.2);
     Object.entries(this.members).forEach((mem) => {
       if (mem[1].type === "center") {
         mem[1].position.x = this.cw;
@@ -190,7 +190,7 @@ export class Members {
   }
   rotateSystem() {
     this.state = (this.state + 1) % 1100;
-    Object.entries(this.members).forEach((mem, index) => {
+    Object.entries(this.members).forEach((mem) => {
       if (mem[1].type === "orbital") {
         if (this.state % mem[1].sequentialNum === 0) mem[1].stateOfMovment = (mem[1].stateOfMovment + 1) % 360;
         mem[1].position.x += this.directions[mem[1].stateOfMovment].x;
@@ -229,7 +229,18 @@ export class Members {
       this.ctx.beginPath();
       this.ctx.fillStyle = mem[1].color;
       this.ctx.shadowBlur = 0;
-      this.ctx.fillText(mem[0].charAt(0).toUpperCase() + mem[0].slice(1), mem[1].position.x, mem[1].position.y - 30);
+      this.ctx.fillText(
+        new RegExp(/(belt)(Of)/).test(mem[0])
+          ? mem[0].replace(
+              /(belt)(Of)([\w]+)/,
+              ($1, $2, $3, $4) => {
+                return `${$2.charAt(0).toUpperCase() + $2.slice(1)} ${$3.toLowerCase()} ${$4.charAt(0).toUpperCase() + $4.slice(1)}`;
+              } //
+            )
+          : mem[0].charAt(0).toUpperCase() + mem[0].slice(1),
+        mem[1].position.x,
+        mem[1].position.y - 30
+      );
       this.ctx.closePath();
       if (mem[1].satellite) {
         this.ctx.beginPath();

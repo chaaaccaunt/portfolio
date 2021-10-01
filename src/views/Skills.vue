@@ -1,7 +1,7 @@
 <template>
   <section class="skills">
     <header>
-      <h1 class="skills__title title">Здравствуйте, меня зовут Сергей!</h1>
+      <h1 class="skills__title">Здравствуйте, меня зовут Сергей!</h1>
     </header>
     <dl class="skills__block">
       <dt>Кто я:</dt>
@@ -76,15 +76,16 @@ export default defineComponent({
 
 <style lang="scss">
 .skills {
-  font-size: 1.3em;
+  font-size: 1.2em;
   &__title {
+    margin: 0;
+    padding: 0;
     text-align: center;
     font-size: 2rem;
   }
   &__block {
     dt {
       font-weight: bold;
-      font-size: 1.2rem;
     }
   }
 }

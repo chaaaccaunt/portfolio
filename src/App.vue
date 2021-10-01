@@ -24,5 +24,7 @@ body {
 }
 #app {
   height: 100%;
+  color: #34373b;
+  font-family: "Roboto-Regular", sans-serif;
 }
 </style>
