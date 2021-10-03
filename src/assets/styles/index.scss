@@ -1,5 +1,5 @@
 @forward "./normalize.scss";
-@forward "./backgrounds.scss";
+@forward "./variables.scss";
 
 @font-face {
   font-family: "Roboto-Regular";
@@ -19,5 +19,3 @@
   font-weight: Medium;
   font-style: normal;
 }
-
-$mwidth: 1440px;

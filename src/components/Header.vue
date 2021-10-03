@@ -20,8 +20,8 @@ export default defineComponent({
           url: "/",
         },
         {
-          name: "Skills",
-          url: "/skills",
+          name: "About",
+          url: "/about",
         },
         {
           name: "Path to programming",
@@ -40,33 +40,26 @@ export default defineComponent({
 <style lang="scss">
 .navbar {
   width: 100%;
-  height: 80px;
   & nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 20px 0;
-    margin-top: 10px;
+    padding: 1em 0;
   }
   & a {
     display: block;
-    margin: 0 10px;
-    padding: 5px 10px;
+    margin: 0 0.4em;
+    padding: 0.2em 0.4em;
     text-decoration: none;
-    border: 1px solid #34373b;
-    border-radius: 4px;
+    border: 0.1em solid #34373b;
+    border-radius: 1rem;
     color: #34373b;
+    -webkit-tap-highlight-color: transparent;
   }
   & &__exact-active {
     background-color: rgb(125, 162, 209);
     border-color: rgb(125, 162, 209);
     color: #fff;
-  }
-}
-
-@media (max-aspect-ratio: 3/5) {
-  .navbar {
-    font-size: 0.6em;
   }
 }
 </style>

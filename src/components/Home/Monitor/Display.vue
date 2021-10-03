@@ -12,8 +12,10 @@ import Rocket from "@/components/Home/Monitor/Display/Rocket.vue";
 
 export default defineComponent({
   name: "Display",
-  setup() {
-    this;
+  data() {
+    return {
+      count: 0,
+    };
   },
   methods: {
     renderSolar() {
@@ -22,6 +24,12 @@ export default defineComponent({
   },
   components: { Rocket },
   mounted() {
+    if (!localStorage.getItem("count")) localStorage.setItem("count", "1");
+    if (parseInt(localStorage.getItem("count")!) > 2) {
+      localStorage.setItem("count", "1");
+      window.location.reload();
+    }
+    localStorage.setItem("count", (parseInt(localStorage.getItem("count")!) + 1).toString());
     this.renderSolar();
     window.addEventListener("resize", this.renderSolar);
   },

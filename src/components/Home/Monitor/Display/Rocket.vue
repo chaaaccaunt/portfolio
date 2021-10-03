@@ -236,7 +236,7 @@ export default defineComponent({
   },
   methods: {
     checkOut() {
-      this.$router.push({ name: "Skills" });
+      this.$router.push({ name: "About" });
     },
     close() {
       this.active = !this.active;

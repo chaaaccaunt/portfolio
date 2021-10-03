@@ -1,16 +1,13 @@
 <template>
+  <h1 class="title">Контакты и ссылки</h1>
   <div class="contacts">
-    <div class="contacts__email">
-      <h4>Email</h4>
-      <p>chaaaccaunt@gmail.com</p>
-      <a class="contacts__email-address" href="mailto:chaaaccaunt@gmail.com?subject=По поводу портфолио" target="_blank"></a>
-      <my-button :link="'chaaaccaunt@gmail.com'">copy</my-button>
+    <h4>Контакты</h4>
+    <div class="contacts__wrp">
+      <my-links v-for="(cont, index) in contacts" :key="index" :image="cont.image" :link="cont.link">{{ cont.name }}</my-links>
     </div>
-    <div class="contacts__links">
-      <h4>Ссылки</h4>
-      <div class="contacts__links-wrp">
-        <links v-for="l in links" :key="l.image" :image="l.image" :link="l.link">{{ l.image }}</links>
-      </div>
+    <h4>Ссылки</h4>
+    <div class="contacts__wrp">
+      <my-links v-for="(link, index) in links" :key="index" :image="link.image" :link="link.link">{{ link.name }}</my-links>
     </div>
   </div>
 </template>
@@ -23,50 +20,69 @@ export default defineComponent({
     return {
       links: [
         {
-          image: "Codewars",
+          image: "Codewars.png",
+          name: "Codewars",
           link: "https://www.codewars.com/users/chydym",
         },
         {
-          image: "GitHub",
+          image: "GitHub.png",
+          name: "GitHub",
           link: "https://github.com/chaaaccaunt",
+        },
+      ],
+      contacts: [
+        {
+          image: "email.jpg",
+          name: "Email",
+          link: "mailto:chaaaccaunt@gmail.com?subject=По поводу портфолио",
+        },
+        {
+          image: "telegram.png",
+          name: "Telegram",
+          link: "https://t.me/SChydym",
         },
       ],
     };
   },
 });
 </script>
-
 <style lang="scss">
 .contacts {
-  height: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  &__links {
-    width: 250px;
+  & h4 {
+    margin: 1vw 0;
+  }
+  & h4:nth-child(1) {
+    margin: 1vw 0 1vw 0;
+  }
+  &__wrp {
+    min-width: 15vw;
+    margin: 1vw 0;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    &-wrp {
-      display: flex;
-      width: 250px;
-      justify-content: space-around;
-      flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .contacts {
+    &__wrp {
+      min-width: 20vw;
     }
   }
-  &__email {
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &-address {
-      display: block;
-      width: 50px;
-      height: 50px;
-      background: no-repeat center/100% url("~@/assets/icons/mailto.png");
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .contacts {
+    &__wrp {
+      min-width: 25vw;
+    }
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .contacts {
+    &__wrp {
+      min-width: 30vw;
     }
   }
 }

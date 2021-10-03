@@ -8,22 +8,32 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue"),
   },
   {
-    path: "/skills",
-    name: "Skills",
+    path: "/about",
+    name: "About",
     meta: { layout: "main" },
-    component: () => import(/* webpackChunkName: "skills" */ "../views/Skills.vue"),
+    component: () => import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
     path: "/path",
     name: "Path",
     meta: { layout: "main" },
-    component: () => import(/* webpackChunkName: "skills" */ "../views/Path.vue"),
+    component: () => import(/* webpackChunkName: "Path" */ "../views/Path.vue"),
   },
   {
     path: "/contacts",
     name: "Contacts",
     meta: { layout: "main" },
-    component: () => import(/* webpackChunkName: "skills" */ "../views/Contacts.vue"),
+    component: () => import(/* webpackChunkName: "Contacts" */ "../views/Contacts.vue"),
+  },
+  {
+    path: "/404",
+    name: "NotFound",
+    meta: { layout: "main" },
+    component: () => import(/* webpackChunkName: "Contacts" */ "../views/NotFound.vue"),
+  },
+  {
+    path: "/:catchAll(.*)",
+    redirect: "/404",
   },
 ];
 
@@ -33,5 +43,7 @@ const router = createRouter({
   linkActiveClass: "",
   linkExactActiveClass: "navbar__exact-active",
 });
+
+router.beforeEach((to, from) => {});
 
 export default router;
