@@ -35,6 +35,7 @@ export default defineComponent({
   border-radius: 0.5vw;
   cursor: pointer;
   transition: background-position 1s;
+  background-color: transparent;
   background-size: 400%;
   background-position: right;
   background-repeat: no-repeat;
@@ -47,5 +48,22 @@ export default defineComponent({
   }
 }
 @keyframes tcolor {
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .mbutton {
+    padding: 1vw;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .mbutton {
+    padding: 1.8vw;
+    border-radius: 1vw;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .mbutton {
+    padding: 2vw;
+    border-radius: 1.5vw;
+  }
 }
 </style>
